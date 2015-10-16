@@ -1,0 +1,45 @@
+{
+  "name": "img2css",
+  "version": "0.0.1",
+  "description": "Convert any image to pure css.",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build:webpack": "NODE_ENV=production webpack --config webpack.config.prod.js",
+    "build": "npm run clean && npm run build:webpack",
+    "start": "node devServer.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/javierbyte/img2css.git"
+  },
+  "keywords": [
+    "react",
+    "reactjs",
+    "css",
+    "picture"
+  ],
+  "author": "Javier Bórquez <hi@javier.xyz> (http://github.com/javierbyte)",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/javierbyte/img2css/issues"
+  },
+  "homepage": "https://github.com/javierbyte/img2css",
+  "devDependencies": {
+    "babel-core": "^5.4.7",
+    "babel-loader": "^5.1.2",
+    "babel-plugin-react-transform": "^1.1.1",
+    "express": "^4.13.3",
+    "react-transform-catch-errors": "^1.0.0",
+    "react-transform-hmr": "^1.0.0",
+    "redbox-react": "^1.0.1",
+    "rimraf": "^2.4.3",
+    "webpack": "^1.9.6",
+    "webpack-dev-middleware": "^1.2.0",
+    "webpack-hot-middleware": "^2.0.0"
+  },
+  "dependencies": {
+    "lodash": "^3.10.1",
+    "react": "^0.13.0",
+    "react-dropzone": "^2.2.1"
+  }
+}
