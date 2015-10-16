@@ -39,17 +39,31 @@ export const App = React.createClass({
       }).join(',')
     }).join(',')
 
-    console.warn(masterShadow)
-
     return (
       <div>
         <Dropzone onDrop={this.onDrop} className='dropZone'>
           <div>Drop image here, or click to upload.</div>
         </Dropzone>
 
-        <div className='pixel' style={{
-          boxShadow: masterShadow
-        }} />
+        {rgbArray && (
+          <div>
+            <div className='pixel' style={{
+              boxShadow: masterShadow,
+              marginBottom: rgbArray.length
+            }} />
+
+            <br/>
+
+            <div className='tutorial'>
+              Now you can create a single pixel 'div' and with these styles you will get your image!
+            </div>
+
+            <div className='code'>
+              {`box-shadow: ${masterShadow}`}
+            </div>
+          </div>
+        )}
+
       </div>
     )
   }

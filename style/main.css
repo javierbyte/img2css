@@ -15,12 +15,12 @@ body {
 	height: 1px;
 	width: 1px;
 	background: #000;
-	float: left;
+	margin-left: 1em;
 }
 
 .dropZone {
-	height: 200px;
-	width: 200px;
+	height: 150px;
+	width: 150px;
 	margin: 1em;
 	display: flex;
 	text-align: center;
@@ -30,6 +30,16 @@ body {
 	cursor: pointer;
 }
 
+.tutorial {
+	padding: 1em;
+}
+
+.code {
+	font-family: monaco, monospace;
+	font-size: 0.7em;
+	padding: 2em;
+	background: #f0f0f0;
+}
 
 .cf:before,
 .cf:after {
