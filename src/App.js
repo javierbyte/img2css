@@ -47,12 +47,14 @@ export const App = React.createClass({
 
         {rgbArray && (
           <div>
+            <div className='tutorial'>
+              This is your pure css (and single div) image! Enjoy!
+            </div>
+
             <div className='pixel' style={{
               boxShadow: masterShadow,
               marginBottom: rgbArray.length
             }} />
-
-            <br/>
 
             <div className='tutorial'>
               Now you can create a single pixel 'div' and with these styles you will get your image!

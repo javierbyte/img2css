@@ -2,4 +2,6 @@
 
 Convert any image to pure css.
 
-[See and example](http://javier.xyz/img2css/)
+[Live demo](http://javier.xyz/img2css/)
+
+More docs coming soon...
