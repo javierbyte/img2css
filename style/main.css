@@ -1,5 +1,3 @@
-@import 'san-francisco.css';
-
 * {
 	padding: 0;
 	margin: 0;
@@ -7,21 +5,34 @@
 }
 
 body {
-	font-family: 'San Francisco', serif;
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	line-height: 1.618;
 	font-weight: 300;
+	color: #404143;
+}
+
+h1 {
+	font-weight: 100;
+	font-size: 3em;
+	line-height: 1;
+	padding-bottom: 0.309em;
+}
+
+.padding-2x {
+	padding: 2em;
 }
 
 .pixel {
 	height: 1px;
 	width: 1px;
 	background: #000;
-	margin-left: 1em;
 }
 
 .dropZone {
 	height: 150px;
 	width: 150px;
-	margin: 1em;
+	margin: 1em 0;
 	display: flex;
 	text-align: center;
 	align-items: center;
@@ -29,14 +40,21 @@ body {
 	padding: 2em;
 	cursor: pointer;
 }
+.dropZone span {
+	width: 100%;
+}
+.dropZone:hover {
+	border-color: #999;
+}
 
 .tutorial {
-	padding: 1em;
+	padding: 1em 0;
 }
 
 .code {
 	font-family: monaco, monospace;
 	font-size: 0.6em;
+	line-height: 1.309;
 	padding: 2em;
 	background: #f0f0f0;
 }

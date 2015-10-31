@@ -9,13 +9,19 @@ export const App = React.createClass({
 
   getInitialState () {
     return {
-      rgbArray: null
+      rgbArray: null,
+      loadingImage: false
     }
   },
 
   onDrop (files) {
     var file = files[0]
     var fr = new window.FileReader()
+
+    this.setState({
+      loadingImage: true
+    })
+
     fr.onload = (data) => {
       const base64 = data.currentTarget.result
 
@@ -23,7 +29,8 @@ export const App = React.createClass({
         if (err) return console.error(err)
 
         this.setState({
-          rgbArray: data
+          rgbArray: data,
+          loadingImage: false
         })
       })
     }
@@ -31,18 +38,22 @@ export const App = React.createClass({
   },
 
   render () {
-    var {rgbArray} = this.state
+    var {rgbArray, loadingImage} = this.state
 
     var masterShadow = _.map(rgbArray, (row, rowIndex) => {
       return _.map(row, (col, colIndex) => {
-        return `rgb(${col.r}, ${col.g}, ${col.b}) ${colIndex}px ${rowIndex}px`
+        return `rgb(${col.r},${col.g},${col.b}) ${colIndex ? colIndex + 'px' : 0} ${rowIndex ? rowIndex + 'px' : 0}`
       }).join(',')
     }).join(',')
 
     return (
-      <div>
+      <div className='padding-2x'>
+        <h1>img2css.</h1>
+        <div>This is a tool that can convert any image into a <i>pure css</i> image.</div>
+        <div>Try it! (It's cpu heavy, please try with a small image first).</div>
+
         <Dropzone onDrop={this.onDrop} className='dropZone'>
-          <div>Drop image here, or click to upload.</div>
+          {loadingImage ? 'Processing...' : 'Drop an image here, or click to upload.'}
         </Dropzone>
 
         {rgbArray && (
@@ -57,14 +68,18 @@ export const App = React.createClass({
             }} />
 
             <div className='tutorial'>
-              Now you can create a single pixel 'div' and with these styles you will get your image!
+              The code:
             </div>
 
             <div className='code'>
-              {`box-shadow: ${masterShadow}`}
+              {`<div style="height: 1px; width: 1px; box-shadow: ${masterShadow}"></div>`}
             </div>
           </div>
         )}
+
+        <div className='tutorial'>
+          Created by <a href='http://github.com/javierbyte/'>javierbyte</a>.
+        </div>
 
       </div>
     )
