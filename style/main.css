@@ -23,6 +23,10 @@ h1 {
 	padding: 2em;
 }
 
+.padding-horizontal-2x {
+	padding: 0 2em;
+}
+
 .pixel {
 	height: 1px;
 	width: 1px;

@@ -47,10 +47,7 @@ export const App = React.createClass({
     }).join(',')
 
     return (
-      <div className='padding-2x'>
-        <h1>img2css.</h1>
-        <div>This is a tool that can convert any image into a <i>pure css</i> image.</div>
-        <div>Try it! (It's cpu heavy, please try with a small image first).</div>
+      <div className='padding-horizontal-2x'>
 
         <Dropzone onDrop={this.onDrop} className='dropZone'>
           {loadingImage ? 'Processing...' : 'Drop an image here, or click to upload.'}
@@ -76,10 +73,6 @@ export const App = React.createClass({
             </div>
           </div>
         )}
-
-        <div className='tutorial'>
-          Created by <a href='http://github.com/javierbyte/'>javierbyte</a>.
-        </div>
 
       </div>
     )
