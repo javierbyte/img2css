@@ -18,6 +18,10 @@ export const App = React.createClass({
     var file = files[0]
     var fr = new window.FileReader()
 
+    if (window.ga) {
+      window.ga('send', 'event', 'button', 'click', 'img2css execute')
+    }
+
     this.setState({
       loadingImage: true
     })
