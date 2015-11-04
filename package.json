@@ -40,6 +40,7 @@
   "dependencies": {
     "lodash": "^3.10.1",
     "react": "^0.13.0",
-    "react-dropzone": "^2.2.1"
+    "react-dropzone": "^2.2.1",
+    "tinycolor2": "^1.1.2"
   }
 }

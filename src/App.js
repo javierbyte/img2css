@@ -1,9 +1,20 @@
 import React from 'react'
+import tinycolor from 'tinycolor2'
 
 var _ = require('lodash')
 var Dropzone = require('react-dropzone')
 
 var base64ImageToRGBArray = require('./lib/base64ImageToRGBArray')
+
+function compressColor (rgb) {
+  var hex = tinycolor(rgb).toHexString()
+
+  if (hex[1] === hex[2] && hex[3] === hex[4] && hex[5] === hex[6]) {
+    return '#' + hex[1] + hex[3] + hex[4]
+  } else {
+    return hex
+  }
+}
 
 export const App = React.createClass({
 
@@ -46,7 +57,9 @@ export const App = React.createClass({
 
     var masterShadow = _.map(rgbArray, (row, rowIndex) => {
       return _.map(row, (col, colIndex) => {
-        return `rgb(${col.r},${col.g},${col.b}) ${colIndex ? colIndex + 'px' : 0} ${rowIndex ? rowIndex + 'px' : 0}`
+        var color = compressColor(`rgb(${col.r},${col.g},${col.b})`)
+
+        return `${color} ${colIndex ? colIndex + 'px' : 0} ${rowIndex ? rowIndex + 'px' : 0}`
       }).join(',')
     }).join(',')
 
@@ -60,10 +73,12 @@ export const App = React.createClass({
         {rgbArray && (
           <div>
             <div className='tutorial'>
-              This is your pure css (and single div) image! Enjoy!
+              This is your pure css (and single div) image! Enjoy! {masterShadow.length.toLocaleString()}b
             </div>
 
             <div className='pixel' style={{
+              height: 1,
+              width: 1,
               boxShadow: masterShadow,
               marginBottom: rgbArray.length
             }} />
