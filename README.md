@@ -14,3 +14,9 @@ Well, it just puts the image in a canvas, calculates an array with the rgb value
 Hum... to demonstrate the power of CSS!
 
 And this may have another interesting properties, like creating loading screens with pixel art.
+
+## Planned features
+* Make the result smaller with smarter shadows and common background detection. (In progress)
+* Make animation and image morphing by using css transitions on the shadows. (In progress)
+* Add scale options to better suport pixel art.
+* Support for custom image filters.
