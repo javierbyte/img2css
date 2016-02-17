@@ -4,7 +4,7 @@ This is a tool that can convert any image into a pure css image.
 
 [Live demo](http://javier.xyz/img2css/)
 
-[![img2css](screenshot.png)](http://javier.xyz/img2css/)
+[![img2css](docs-assets/screenshot.jpg)](http://javier.xyz/img2css/)
 
 ## How does it works?
 
