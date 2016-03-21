@@ -1,6 +1,6 @@
 var base64ImageToRGBArray = function (base64, callback) {
   var img = new window.Image()
-  img.onload = () => {
+  img.onload = function onImageLoad() {
     var canvas = document.createElement('canvas')
     var ctx
     var data

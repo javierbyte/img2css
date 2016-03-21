@@ -47,6 +47,17 @@ export const App = React.createClass({
     fr.onload = (data) => {
       const base64 = data.currentTarget.result
 
+      if (base64.length > 100000) {
+        let confirmation = confirm('Your image is really big, do you really want to try to convert it?')
+
+        if(!confirmation) {
+          this.setState({
+            loadingImage: false
+          })
+          return
+        }
+      }
+
       base64ImageToRGBArray(base64, (err, data) => {
         if (err) return console.error(err)
 
