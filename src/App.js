@@ -1,10 +1,10 @@
-import React from 'react'
-import tinycolor from 'tinycolor2'
+var React = require('react');
+var tinycolor = require('tinycolor2');
 
 var _ = require('lodash')
 var Dropzone = require('react-dropzone')
 
-var base64ImageToRGBArray = require('./lib/base64ImageToRGBArray')
+var {base64ImageToRGBMatrix} = require('base64-image-utils')
 
 function compressColor (rgb) {
   var hex = tinycolor(rgb).toHexString()
@@ -58,11 +58,11 @@ export const App = React.createClass({
         }
       }
 
-      base64ImageToRGBArray(base64, (err, data) => {
+      base64ImageToRGBMatrix(base64, (err, data) => {
         if (err) return console.error(err)
 
         this.setState({
-          rgbArray: data,
+          rgbMatrix: data,
           loadingImage: false
         })
       })
@@ -71,9 +71,9 @@ export const App = React.createClass({
   },
 
   render () {
-    var {rgbArray, loadingImage} = this.state
+    var {rgbMatrix, loadingImage} = this.state
 
-    var masterShadow = _.map(rgbArray, (row, rowIndex) => {
+    var masterShadow = _.map(rgbMatrix, (row, rowIndex) => {
       return _.map(row, (col, colIndex) => {
         var color = compressColor(`rgb(${col.r},${col.g},${col.b})`)
 
@@ -88,7 +88,7 @@ export const App = React.createClass({
           {loadingImage ? 'Processing...' : 'Drop an image here, or click to upload.'}
         </Dropzone>
 
-        {rgbArray && (
+        {rgbMatrix && (
           <div>
             <div className='tutorial'>
               This is your pure css (and single div) image! Enjoy! {masterShadow.length.toLocaleString()}b
@@ -98,7 +98,7 @@ export const App = React.createClass({
               height: 1,
               width: 1,
               boxShadow: masterShadow,
-              marginBottom: rgbArray.length
+              marginBottom: rgbMatrix.length
             }} />
 
             <div className='tutorial'>

@@ -38,6 +38,7 @@
     "webpack-hot-middleware": "^2.0.0"
   },
   "dependencies": {
+    "base64-image-utils": "^0.1.0",
     "lodash": "^3.10.1",
     "react": "^0.13.0",
     "react-dropzone": "^2.2.1",
