@@ -1,16 +1,17 @@
-var path = require('path')
-var webpack = require('webpack')
+var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
-  devtool: 'eval',
+  devtool: 'cheap-module-eval-source-map',
   entry: [
+    'eventsource-polyfill',
     'webpack-hot-middleware/client',
-    './src/index'
+    './src/index.js'
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, '../dist'),
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: '/dist/'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -20,7 +21,7 @@ module.exports = {
     loaders: [{
       test: /\.js$/,
       loaders: ['babel'],
-      include: path.join(__dirname, 'src')
+      include: path.join(__dirname, '../src')
     }]
   }
-}
+};

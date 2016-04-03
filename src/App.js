@@ -1,29 +1,29 @@
-import React from 'react'
-import tinycolor from 'tinycolor2'
+const React = require('react')
+const tinycolor = require('tinycolor2')
 
-var _ = require('lodash')
-var Dropzone = require('react-dropzone')
+const _ = require('lodash')
+const Dropzone = require('react-dropzone')
 
-var base64ImageToRGBArray = require('./lib/base64ImageToRGBArray')
+const base64ImageToRGBArray = require('./lib/base64ImageToRGBArray')
 
 function compressColor (rgb) {
-  var hex = tinycolor(rgb).toHexString()
+  const hex = tinycolor(rgb).toHexString()
 
   switch (hex) { // based on CSS3 supported color names http://www.w3.org/TR/css3-color/
-    case '#c0c0c0': return 'silver';
-    case '#808080': return 'gray';
-    case '#800000': return 'maroon';
-    case '#ff0000': return 'red';
-    case '#800080': return 'purple';
-    case '#008000': return 'green';
-    case '#808000': return 'olive';
-    case '#000080': return 'navy';
-    case '#008080': return 'teal';
+    case '#c0c0c0': return 'silver'
+    case '#808080': return 'gray'
+    case '#800000': return 'maroon'
+    case '#ff0000': return 'red'
+    case '#800080': return 'purple'
+    case '#008000': return 'green'
+    case '#808000': return 'olive'
+    case '#000080': return 'navy'
+    case '#008080': return 'teal'
   }
-  return hex[1] === hex[2] && hex[3] === hex[4] && hex[5] === hex[6] ? "#" + hex[1] + hex[3] + hex[5] : hex;
+  return hex[1] === hex[2] && hex[3] === hex[4] && hex[5] === hex[6] ? '#' + hex[1] + hex[3] + hex[5] : hex
 }
 
-export const App = React.createClass({
+var App = React.createClass({
 
   getInitialState () {
     return {
@@ -48,9 +48,9 @@ export const App = React.createClass({
       const base64 = data.currentTarget.result
 
       if (base64.length > 100000) {
-        let confirmation = confirm('Your image is really big, do you really want to try to convert it?')
+        let confirmation = window.confirm('Your image is really big, do you really want to try to convert it?')
 
-        if(!confirmation) {
+        if (!confirmation) {
           this.setState({
             loadingImage: false
           })
@@ -115,3 +115,5 @@ export const App = React.createClass({
     )
   }
 })
+
+module.exports = App

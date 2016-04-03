@@ -19,6 +19,12 @@ h1 {
 	padding-bottom: 0.309em;
 }
 
+.github-corner {
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
 .padding-2x {
 	padding: 2em;
 }

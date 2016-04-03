@@ -1,5 +1,5 @@
-var path = require('path')
-var webpack = require('webpack')
+var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
   devtool: 'source-map',
@@ -7,12 +7,12 @@ module.exports = {
     './src/index'
   ],
   output: {
-    path: path.join(__dirname, 'static'),
+    path: path.join(__dirname, '../dist'),
     filename: 'bundle.js',
     publicPath: '/static/'
   },
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
@@ -21,6 +21,9 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
         warnings: false
+      },
+      output: {
+        comments: false
       }
     })
   ],
@@ -28,7 +31,7 @@ module.exports = {
     loaders: [{
       test: /\.js$/,
       loaders: ['babel'],
-      include: path.join(__dirname, 'src')
+      include: path.join(__dirname, '../src')
     }]
   }
-}
+};
