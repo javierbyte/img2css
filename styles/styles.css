@@ -12,6 +12,13 @@ body {
 	color: #404143;
 }
 
+a {
+	color: #2980B9;
+}
+a:hover {
+	color: #3498DB;
+}
+
 h1 {
 	font-weight: 100;
 	font-size: 3em;
