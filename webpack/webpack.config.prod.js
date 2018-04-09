@@ -1,8 +1,9 @@
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
+const webpack = require('webpack');
+
+const MinifyPlugin = require("babel-minify-webpack-plugin");
 
 module.exports = {
-  devtool: 'source-map',
   entry: [
     './src/index'
   ],
@@ -18,13 +19,8 @@ module.exports = {
         'NODE_ENV': JSON.stringify('production')
       }
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      compressor: {
-        warnings: false
-      },
-      output: {
-        comments: false
-      }
+    new MinifyPlugin({}, {
+      comments: false
     })
   ],
   module: {

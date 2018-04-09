@@ -1,6 +1,6 @@
 # img2css
 
-This is a tool that can convert any image into a pure css image.
+Convert any image to pure CSS.
 
 [Live demo](http://javier.xyz/img2css/)
 
@@ -15,12 +15,22 @@ Hum... to demonstrate the power of CSS!
 
 And this may have other interesting properties, like creating loading screens with pixel art or pixel-level animation.
 
+I made anotehr proof-of-concept using pixel-level animatinos here http://javier.xyz/morphin/
+
 ## Planned features
-* Make the result smaller with smarter shadows and common background detection. (In progress)
-* Make animation and image morphing by using css transitions on the shadows. (In progress)
+* Make the result smaller with smarter shadows and common background detection.
+* Make animation and image morphing by using css transitions on the shadows. See http://javier.xyz/morphin/
 * Add scale options to better suport pixel art.
 * Support for custom image filters.
 
 ## Development
 Run development server:
-  npm start
+```
+npm start
+```
+
+Build 
+
+```
+npm run build
+```
