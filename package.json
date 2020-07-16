@@ -35,7 +35,7 @@
     "webpack-hot-middleware": "^2.9.1"
   },
   "dependencies": {
-    "lodash": "^4.7.0",
+    "lodash": "^4.17.19",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-dropzone": "^3.3.2",
