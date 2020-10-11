@@ -6,19 +6,21 @@ Convert any image to pure CSS.
 
 [![img2css](docs-assets/screenshot.jpg)](https://javier.xyz/img2css/)
 
-## How does it works?
+To use it go to https://javier.xyz/img2css/
+Looking for a programmatic way to do this? see https://github.com/javierbyte/base64-image-utils
+I also made a per-pixel animation experiment, see https://github.com/javierbyte/morphin-
 
-Well, it just puts the image in a canvas, calculates an array with the rgb values, and then... creates a single pixel shadow for each value!
+## How does it work?
+
+This tool creates a single one pixel shadow per pixel in the source images.
 
 ## Why?
 
-Hum... to demonstrate the power of CSS!
+Hmm... to demonstrate the power of CSS!
 
 And this may have other interesting applications, like creating loading screens with pixel art, display images where `<img />` tags are not allowed or supported.
 
-I made another proof-of-concept using pixel-level animations here https://javier.xyz/morphin/
-
-## Development
+### Development
 
 Run development server:
 
