@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "deploy": "rm -rf out && npm run export && gh-pages -d out --dotfiles"
+    "deploy": "rm -rf dist && npm run build && touch dist/.nojekyll && gh-pages -d dist --dotfiles"
   },
   "repository": {
     "type": "git",
@@ -14,9 +14,9 @@
   "keywords": [],
   "author": "Javier Bórquez <hi@javier.xyz> (http://github.com/javierbyte)",
   "license": "CC0-1.0",
-  "homepage": "https://github.com/javierbyte/img2css",
   "devDependencies": {
     "vite": "^1.0.0-rc.1",
+    "gh-pages": "^3.1.0",
     "vite-plugin-react": "^3.0.0"
   },
   "dependencies": {
