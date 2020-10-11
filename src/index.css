@@ -78,6 +78,14 @@ h1 {
 .dropzone:hover {
 	border-color: #999;
 }
+.dropzone input {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 150px;
+	width: 180px;
+	opacity: 0;
+}
 
 .tutorial {
 	padding: 1em 0;

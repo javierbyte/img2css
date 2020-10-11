@@ -46,12 +46,12 @@ function App() {
     console.log(event);
 
     let dt = event.dataTransfer;
-    let files = dt.files;
+    let files = dt ? dt.files : event.target.files;
+    const file = files[0];
 
-    console.log(files);
+    // const file = dt.file;
 
-    var file = files[0];
-    var fr = new window.FileReader();
+    const fr = new window.FileReader();
 
     loadingImageSet(true);
 
@@ -100,6 +100,7 @@ function App() {
     <div className="padding-horizontal-2x">
       <div className="dropzone" onDrop={onDrop} onDragOver={onDragOver} onDragEnter={onDragOver}>
         <span>{loadingImage ? "Processing..." : "Drop an image here, or click to upload."}</span>
+        <input type="file" onChange={onDrop} multiple accept="image/*" />
       </div>
 
       {rgbMatrix && (
