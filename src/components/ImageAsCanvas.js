@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-var ImageAsCanvas = React.createClass({
+const ImageAsCanvas = React.createClass({
   propTypes: {
-    base64image: React.PropTypes.string
+    base64image: React.PropTypes.string,
   },
 
   shouldComponentUpdate(nextProps) {
@@ -18,12 +18,12 @@ var ImageAsCanvas = React.createClass({
   },
 
   _loadImageToCanvas() {
-    var img = new window.Image();
+    const img = new window.Image();
     img.onload = () => {
-      var canvas = React.findDOMNode(this.refs.canvas);
+      const canvas = React.findDOMNode(this.refs.canvas);
       canvas.width = img.width;
       canvas.height = img.height;
-      var ctx = canvas.getContext('2d');
+      const ctx = canvas.getContext("2d");
       ctx.drawImage(img, 0, 0);
 
       console.warn(ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height));
@@ -37,7 +37,7 @@ var ImageAsCanvas = React.createClass({
 
   render() {
     return <canvas ref="canvas" />;
-  }
+  },
 });
 
-module.exports = ImageAsCanvas;
+export default ImageAsCanvas;

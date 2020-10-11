@@ -42,7 +42,7 @@ h1 {
 
 .pixel {}
 
-.dropZone {
+.dropzone {
 	height: 150px;
 	width: 150px;
 	margin: 1em 0;
@@ -53,10 +53,10 @@ h1 {
 	padding: 2em;
 	cursor: pointer;
 }
-.dropZone span {
+.dropzone p {
 	width: 100%;
 }
-.dropZone:hover {
+.dropzone:hover {
 	border-color: #999;
 }
 
