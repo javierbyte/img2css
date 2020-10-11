@@ -11,22 +11,19 @@ Convert any image to pure CSS.
 Well, it just puts the image in a canvas, calculates an array with the rgb values, and then... creates a single pixel shadow for each value!
 
 ## Why?
+
 Hum... to demonstrate the power of CSS!
 
-And this may have other interesting applications, like creating loading screens with pixel art or pixel-level animation.
+And this may have other interesting applications, like creating loading screens with pixel art, display images where `<img />` tags are not allowed or supported.
 
 I made another proof-of-concept using pixel-level animations here https://javier.xyz/morphin/
 
-## Planned features
-* Make the result smaller with smarter shadows and common background detection.
-* Make animation and image morphing by using css transitions on the shadows. See https://javier.xyz/morphin/
-* Add scale options to better support pixel art.
-* Support for custom image filters.
-
 ## Development
+
 Run development server:
+
 ```
-npm start
+npm run dev
 ```
 
 Build
