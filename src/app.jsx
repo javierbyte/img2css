@@ -74,13 +74,9 @@ function App() {
     event.stopPropagation();
     event.preventDefault();
 
-    console.log(event);
-
     const dt = event.dataTransfer;
     const files = dt ? dt.files : event.target.files;
     const file = files[0];
-
-    // const file = dt.file;
 
     const fr = new window.FileReader();
 
@@ -93,6 +89,8 @@ function App() {
 
       base64ImageToRGBMatrix(base64, (err, data) => {
         if (err) return console.error(err);
+
+        console.log(data);
 
         rgbMatrixSet(data);
         loadingImageSet(false);
@@ -109,13 +107,12 @@ function App() {
   const masterShadow = _.map(rgbMatrix, (row, rowIndex) => {
     return _.map(row, (col, colIndex) => {
       const color = compressColor(`rgb(${col.r},${col.g},${col.b})`);
-
       return `${color} ${colIndex ? colIndex + "px" : 0} ${rowIndex ? rowIndex + "px" : 0}`;
     }).join(",");
   }).join(",");
 
   const handleFocus = (event) => {
-    console.log("on click");
+    event.preventDefault();
     event.stopPropagation();
     event.target.select();
   };
