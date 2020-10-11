@@ -6,9 +6,9 @@ Convert any image to pure CSS.
 
 [![img2css](docs-assets/screenshot.jpg)](https://javier.xyz/img2css/)
 
-To use it go to https://javier.xyz/img2css/
-Looking for a programmatic way to do this? see https://github.com/javierbyte/base64-image-utils
-I also made a per-pixel animation experiment, see https://github.com/javierbyte/morphin-
+- To use it go to https://javier.xyz/img2css
+- Looking for a programmatic way to do this? see https://github.com/javierbyte/base64-image-utils
+- I also made a per-pixel animation experiment, see https://github.com/javierbyte/morphin
 
 ## How does it work?
 
