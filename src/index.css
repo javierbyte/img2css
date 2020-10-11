@@ -85,6 +85,7 @@ h1 {
 	height: 150px;
 	width: 180px;
 	opacity: 0;
+	cursor: pointer;
 }
 
 .tutorial {
