@@ -139,6 +139,7 @@ function App() {
                 width: 1,
                 boxShadow: masterShadow,
                 marginBottom: rgbMatrix.length,
+                marginRight: rgbMatrix[0].length,
               }}
             />
           </div>
@@ -146,7 +147,7 @@ function App() {
             onFocus={handleFocus}
             onChange={(e) => {}}
             className="code"
-            value={`<div style="height: 1px; width: 1px; box-shadow: ${masterShadow}"></div>`}
+            value={`<div style="margin-right: ${rgbMatrix[0].length}px; margin-bottom: ${rgbMatrix.length}px; height: 1px; width: 1px; box-shadow: ${masterShadow}"></div>`}
           />
           Size: {masterShadow.length.toLocaleString()}b
         </div>

@@ -2,9 +2,9 @@
 
 Convert any image to pure CSS.
 
-[Live demo](http://javier.xyz/img2css/)
+[Live demo](https://javier.xyz/img2css/)
 
-[![img2css](docs-assets/screenshot.jpg)](http://javier.xyz/img2css/)
+[![img2css](docs-assets/screenshot.jpg)](https://javier.xyz/img2css/)
 
 ## How does it works?
 
@@ -15,11 +15,11 @@ Hum... to demonstrate the power of CSS!
 
 And this may have other interesting applications, like creating loading screens with pixel art or pixel-level animation.
 
-I made another proof-of-concept using pixel-level animations here http://javier.xyz/morphin/
+I made another proof-of-concept using pixel-level animations here https://javier.xyz/morphin/
 
 ## Planned features
 * Make the result smaller with smarter shadows and common background detection.
-* Make animation and image morphing by using css transitions on the shadows. See http://javier.xyz/morphin/
+* Make animation and image morphing by using css transitions on the shadows. See https://javier.xyz/morphin/
 * Add scale options to better support pixel art.
 * Support for custom image filters.
 
@@ -29,7 +29,7 @@ Run development server:
 npm start
 ```
 
-Build 
+Build
 
 ```
 npm run build
