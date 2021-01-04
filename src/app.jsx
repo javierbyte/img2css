@@ -149,8 +149,13 @@ function App() {
             fontWeight: 900,
             display: "inline-block",
             width: "auto",
-            padding: "6px",
+            paddingTop:"0px",
+            paddingBottom:"14px",
+            paddingLeft:"6px",
+            paddingRight:"6px",
             backgroundColor: "var(--accent-color)",
+            borderRadius:"3px",
+            
           }}>
           img2css
         </HeaderH1>
