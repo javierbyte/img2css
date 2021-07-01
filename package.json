@@ -1,6 +1,6 @@
 {
   "name": "img2css",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Convert any image to pure css.",
   "scripts": {
     "dev": "vite",
@@ -17,14 +17,14 @@
   "devDependencies": {
     "eslint": "^7.11.0",
     "eslint-plugin-react": "^7.21.4",
-    "gh-pages": "^3.1.0",
+    "gh-pages": "^3.2.3",
     "vite": "^1.0.0-rc.1",
     "vite-plugin-react": "^3.0.0"
   },
   "dependencies": {
     "@pika/react": "^16.13.1",
     "@pika/react-dom": "^16.13.1",
-    "base64-image-utils": "^1.2.0",
+    "canvas-image-utils": "^2.0.2",
     "capsize": "^1.1.0",
     "lodash": "^4.17.20",
     "styled-components": "^5.2.0",
