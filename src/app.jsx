@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import tinycolor from "tinycolor2";
 import _ from "lodash";
 
 import {
   HeaderH1,
-  HeaderH2,
   Text,
   Space,
   Box,
@@ -13,11 +12,14 @@ import {
   Dropzone,
   Ul,
   Li,
-} from "./jbx.jsx";
+  Tabs,
+  Tab,
+  Inline,
+} from "jbx";
 
 import Styled from "styled-components";
 
-import { imageToRGBMatrix } from "canvas-image-utils";
+import { imageToRGBMatrix, imageToRawData } from "canvas-image-utils";
 
 const Textarea = Styled.textarea({
   fontFamily: "monaco, monospace",
@@ -65,6 +67,9 @@ function compressColor(rgb) {
 }
 
 function App() {
+  const [outputType, outputTypeSet] = useState("SHADOW");
+  const [originalSize, originalSizeSet] = useState(0);
+  const [base64Data, base64DataSet] = useState("");
   const [rgbMatrix, rgbMatrixSet] = useState(null);
   const [loadingImage, loadingImageSet] = useState(false);
 
@@ -76,14 +81,21 @@ function App() {
     const files = dt ? dt.files : event.target.files;
     const file = files[0];
 
+    originalSizeSet(file.size);
+
     const fr = new window.FileReader();
 
     loadingImageSet(true);
 
     fr.onload = async (data) => {
       const base64src = data.currentTarget.result;
-      const dataMatrix = await imageToRGBMatrix(base64src, { size: 150 });
+      const dataMatrix = await imageToRGBMatrix(base64src, { size: 200 });
+      const canvasRawData = await imageToRawData(base64src, {
+        size: 1080,
+        crop: false,
+      });
 
+      base64DataSet(canvasRawData.ctx.canvas.toDataURL("image/jpeg", 0.66));
       rgbMatrixSet(dataMatrix);
       loadingImageSet(false);
     };
@@ -168,35 +180,104 @@ function App() {
         </Text>
 
         {rgbMatrix && (
-          <div>
+          <Fragment>
             <Space h={2} />
-            <HeaderH2>The result</HeaderH2>
+            <Tabs>
+              <Inline>
+                <Tab
+                  active={outputType === "SHADOW"}
+                  key={"SHADOW"}
+                  onClick={() => {
+                    outputTypeSet("SHADOW");
+                  }}>
+                  <Text>{"Pure CSS"}</Text>
+                </Tab>
+                <Tab
+                  active={outputType === "BASE64"}
+                  key={"BASE64"}
+                  onClick={() => {
+                    outputTypeSet("BASE64");
+                  }}>
+                  <Text>{"Base64"}</Text>
+                </Tab>
+              </Inline>
+            </Tabs>
             <Space h={1} />
-            <Text>This is your pure css (and single div) image! Enjoy!</Text>
-            <Space h={1} />
-            <div
-              style={{
-                height: 1,
-                width: 1,
-                boxShadow: masterShadow,
-                marginBottom: rgbMatrix[0].length * scale,
-                marginRight: rgbMatrix.length * scale,
-              }}
-            />
-            <Space h={1} />
-            <Textarea
-              onFocus={handleFocus}
-              onChange={() => {}}
-              className="code"
-              value={`<div style="margin-right: ${
-                rgbMatrix[0].length * scale
-              }px; margin-bottom: ${
-                rgbMatrix.length * scale
-              }px; height: 1px; width: 1px; box-shadow: ${masterShadow}"></div>`}
-            />
-            <Space h={1} />
-            <Text>Size: {masterShadow.length.toLocaleString()}b</Text>
-          </div>
+
+            {outputType === "BASE64" && (
+              <Fragment>
+                <Text>
+                  <strong>The result (base64).</strong>{" "}
+                  {
+                    "This is your image tag a base64 output. The entire image file is embedded inside the `<img>` tag using base64, so no need external hosting is needed."
+                  }
+                </Text>
+                <Space h={1} />
+
+                <img
+                  src={base64Data}
+                  style={{ maxWidth: "100%", height: "auto", display: "block" }}
+                />
+
+                <Space h={1} />
+
+                <Textarea
+                  onFocus={handleFocus}
+                  onChange={() => {}}
+                  className="code"
+                  value={`<img src="${base64Data}" />`}
+                />
+                <Space h={1} />
+                <Text>
+                  Output size (resized): {base64Data.length.toLocaleString()}b
+                </Text>
+                <Text>
+                  Original size: {Number(originalSize).toLocaleString()}b
+                </Text>
+              </Fragment>
+            )}
+
+            {outputType === "SHADOW" && (
+              <Fragment>
+                <Text>
+                  <strong>The result (pure CSS).</strong> This is your pure CSS
+                  (and single div) image, enjoy! This output was created by
+                  resizing and setting each pixel as a box-shadow of a single pixel div, so
+                  no `img` tag or `background-image` is needed. This can result
+                  in huge outputs, and the use of this output is not recommended
+                  for production unless there is no other option.
+                </Text>
+                <Space h={1} />
+                <div
+                  style={{
+                    height: 1,
+                    width: 1,
+                    boxShadow: masterShadow,
+                    marginBottom: rgbMatrix[0].length * scale,
+                    marginRight: rgbMatrix.length * scale,
+                  }}
+                />
+                <Space h={1} />
+                <Textarea
+                  onFocus={handleFocus}
+                  onChange={() => {}}
+                  className="code"
+                  value={`<div style="margin-right: ${
+                    rgbMatrix[0].length * scale
+                  }px; margin-bottom: ${
+                    rgbMatrix.length * scale
+                  }px; height: 1px; width: 1px; box-shadow: ${masterShadow}"></div>`}
+                />
+                <Space h={1} />
+                <Text>
+                  Output size (resized): {masterShadow.length.toLocaleString()}b
+                </Text>
+                <Text>
+                  Original size: {Number(originalSize).toLocaleString()}b
+                </Text>
+              </Fragment>
+            )}
+          </Fragment>
         )}
 
         <Space h={2} />
