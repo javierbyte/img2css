@@ -3,10 +3,10 @@ import tinycolor from "tinycolor2";
 import _ from "lodash";
 
 import {
+  JBX,
   HeaderH1,
   Text,
   Space,
-  Box,
   A,
   Container,
   Dropzone,
@@ -132,185 +132,180 @@ function App() {
 
   return (
     <Container>
-      <Box padding={2}>
-        <Space h={1} />
+      <JBX accent={"#f1c40f"} />
+      <Space h={1} />
 
-        <HeaderH1
-          style={{
-            fontWeight: 900,
-            display: "inline-block",
-            width: "auto",
-            padding: "6px",
-            backgroundColor: "var(--accent-color)",
-          }}>
-          img2css
-        </HeaderH1>
+      <HeaderH1
+        style={{
+          fontWeight: 900,
+          display: "inline-block",
+          width: "auto",
+          padding: "6px",
+          backgroundColor: "var(--accent-color)",
+        }}>
+        img2css
+      </HeaderH1>
 
-        <Space h={1} />
-        <Text>
-          This is a tool that can convert any image into a pure css image.
-        </Text>
-        <Space h={2} />
+      <Space h={1} />
+      <Text>
+        This is a tool that can convert any image into a pure css image.
+      </Text>
+      <Space h={2} />
 
-        <Dropzone
-          onDrop={onFileSelected}
-          onDragOver={onDragOver}
-          onDragEnter={onDragOver}>
-          {loadingImage ? (
-            <Text>Processing...</Text>
-          ) : (
-            <div>
-              <Text>Drop an image here</Text>
-              <Text>or click to select</Text>
-            </div>
-          )}
-          <input
-            type="file"
-            onChange={onFileSelected}
-            multiple
-            accept="image/*"
-            aria-label="Drop an image here, or click to select"
-          />
-        </Dropzone>
-
-        <Space h={2} />
-        <Text>
-          I also made a per-pixel animation experiment, see{" "}
-          <A href="https://javier.xyz/morphin/">morphin</A>.
-        </Text>
-
-        {rgbMatrix && (
-          <Fragment>
-            <Space h={2} />
-            <Tabs>
-              <Inline>
-                <Tab
-                  active={outputType === "SHADOW"}
-                  key={"SHADOW"}
-                  onClick={() => {
-                    outputTypeSet("SHADOW");
-                  }}>
-                  <Text>{"Pure CSS"}</Text>
-                </Tab>
-                <Tab
-                  active={outputType === "BASE64"}
-                  key={"BASE64"}
-                  onClick={() => {
-                    outputTypeSet("BASE64");
-                  }}>
-                  <Text>{"Base64"}</Text>
-                </Tab>
-              </Inline>
-            </Tabs>
-            <Space h={1} />
-
-            {outputType === "BASE64" && (
-              <Fragment>
-                <Text>
-                  <strong>The result (base64).</strong>{" "}
-                  {
-                    "This is your image tag a base64 output. The entire image file is embedded inside the `<img>` tag using base64, so no need external hosting is needed."
-                  }
-                </Text>
-                <Space h={1} />
-
-                <img
-                  src={base64Data}
-                  style={{ maxWidth: "100%", height: "auto", display: "block" }}
-                />
-
-                <Space h={1} />
-
-                <Textarea
-                  onFocus={handleFocus}
-                  onChange={() => {}}
-                  className="code"
-                  value={`<img src="${base64Data}" />`}
-                />
-                <Space h={1} />
-                <Text>
-                  Output size (resized): {base64Data.length.toLocaleString()}b
-                </Text>
-                <Text>
-                  Original size: {Number(originalSize).toLocaleString()}b
-                </Text>
-              </Fragment>
-            )}
-
-            {outputType === "SHADOW" && (
-              <Fragment>
-                <Text>
-                  <strong>The result (pure CSS).</strong> This is your pure CSS
-                  (and single div) image, enjoy! This output was created by
-                  resizing and setting each pixel as a box-shadow of a single pixel div, so
-                  no `img` tag or `background-image` is needed. This can result
-                  in huge outputs, and the use of this output is not recommended
-                  for production unless there is no other option.
-                </Text>
-                <Space h={1} />
-                <div
-                  style={{
-                    height: 1,
-                    width: 1,
-                    boxShadow: masterShadow,
-                    marginBottom: rgbMatrix[0].length * scale,
-                    marginRight: rgbMatrix.length * scale,
-                  }}
-                />
-                <Space h={1} />
-                <Textarea
-                  onFocus={handleFocus}
-                  onChange={() => {}}
-                  className="code"
-                  value={`<div style="margin-right: ${
-                    rgbMatrix[0].length * scale
-                  }px; margin-bottom: ${
-                    rgbMatrix.length * scale
-                  }px; height: 1px; width: 1px; box-shadow: ${masterShadow}"></div>`}
-                />
-                <Space h={1} />
-                <Text>
-                  Output size (resized): {masterShadow.length.toLocaleString()}b
-                </Text>
-                <Text>
-                  Original size: {Number(originalSize).toLocaleString()}b
-                </Text>
-              </Fragment>
-            )}
-          </Fragment>
+      <Dropzone
+        onDrop={onFileSelected}
+        onDragOver={onDragOver}
+        onDragEnter={onDragOver}>
+        {loadingImage ? (
+          <Text>Processing...</Text>
+        ) : (
+          <div>
+            <Text>Drop an image here</Text>
+            <Text>or click to select</Text>
+          </div>
         )}
+        <input
+          type="file"
+          onChange={onFileSelected}
+          multiple
+          accept="image/*"
+          aria-label="Drop an image here, or click to select"
+        />
+      </Dropzone>
 
-        <Space h={2} />
+      <Space h={2} />
+      <Text>
+        I also made a per-pixel animation experiment, see{" "}
+        <A href="https://javier.xyz/morphin/">morphin</A>.
+      </Text>
 
-        <Text>More unrelated experiments</Text>
-        <Space h={0.5} />
+      {rgbMatrix && (
+        <Fragment>
+          <Space h={2} />
+          <Tabs>
+            <Inline>
+              <Tab
+                active={outputType === "SHADOW"}
+                key={"SHADOW"}
+                onClick={() => {
+                  outputTypeSet("SHADOW");
+                }}>
+                <Text>{"Pure CSS"}</Text>
+              </Tab>
+              <Tab
+                active={outputType === "BASE64"}
+                key={"BASE64"}
+                onClick={() => {
+                  outputTypeSet("BASE64");
+                }}>
+                <Text>{"Base64"}</Text>
+              </Tab>
+            </Inline>
+          </Tabs>
+          <Space h={1} />
+
+          {outputType === "BASE64" && (
+            <Fragment>
+              <Text>
+                <strong>The result (base64).</strong>{" "}
+                {
+                  "This is your image tag a base64 output. The entire image file is embedded inside the `<img>` tag using base64, so no need external hosting is needed."
+                }
+              </Text>
+              <Space h={1} />
+
+              <img
+                src={base64Data}
+                style={{ maxWidth: "100%", height: "auto", display: "block" }}
+              />
+
+              <Space h={1} />
+
+              <Textarea
+                onFocus={handleFocus}
+                onChange={() => {}}
+                className="code"
+                value={`<img src="${base64Data}" />`}
+              />
+              <Space h={1} />
+              <Text>
+                Output size (resized): {base64Data.length.toLocaleString()}b
+              </Text>
+              <Text>
+                Original size: {Number(originalSize).toLocaleString()}b
+              </Text>
+            </Fragment>
+          )}
+
+          {outputType === "SHADOW" && (
+            <Fragment>
+              <Text>
+                <strong>The result (pure CSS).</strong> This is your pure CSS
+                (and single div) image, enjoy! This output was created by
+                resizing and setting each pixel as a box-shadow of a single
+                pixel div, so no `img` tag or `background-image` is needed. This
+                can result in huge outputs, and the use of this output is not
+                recommended for production unless there is no other option.
+              </Text>
+              <Space h={1} />
+              <div
+                style={{
+                  height: 1,
+                  width: 1,
+                  boxShadow: masterShadow,
+                  marginBottom: rgbMatrix[0].length * scale,
+                  marginRight: rgbMatrix.length * scale,
+                }}
+              />
+              <Space h={1} />
+              <Textarea
+                onFocus={handleFocus}
+                onChange={() => {}}
+                className="code"
+                value={`<div style="margin-right: ${
+                  rgbMatrix[0].length * scale
+                }px; margin-bottom: ${
+                  rgbMatrix.length * scale
+                }px; height: 1px; width: 1px; box-shadow: ${masterShadow}"></div>`}
+              />
+              <Space h={1} />
+              <Text>
+                Output size (resized): {masterShadow.length.toLocaleString()}b
+              </Text>
+              <Text>
+                Original size: {Number(originalSize).toLocaleString()}b
+              </Text>
+            </Fragment>
+          )}
+        </Fragment>
+      )}
+
+      <Space h={2} />
+
+      <Text>More unrelated experiments</Text>
+      <Space h={0.5} />
+      <Text>
         <Ul>
           <Li>
-            <Text>
-              Create single line SVG illustrations from your pictures,{" "}
-              <A href="https://javier.xyz/pintr/">PINTR</A>.
-            </Text>
+            Create single line SVG illustrations from your pictures,{" "}
+            <A href="https://javier.xyz/pintr/">PINTR</A>.
           </Li>
           <Li>
-            <Text>
-              Play with 3D and shadows,{" "}
-              <A href="https://sombras.app/">sombras.app</A>.
-            </Text>
+            Play with 3D and shadows,{" "}
+            <A href="https://sombras.app/">sombras.app</A>.
           </Li>
           <Li>
-            <Text>
-              Find the visual center in your images / logos,{" "}
-              <A href="https://javier.xyz/visual-center/">visual-center</A>.
-            </Text>
+            Find the visual center in your images / logos,{" "}
+            <A href="https://javier.xyz/visual-center/">visual-center</A>.
           </Li>
         </Ul>
+      </Text>
 
-        <Space h={2} />
-        <Text>
-          Made by <A href="https://twitter.com/javierbyte">javierbyte</A>.
-        </Text>
-        <Space h={3} />
-      </Box>
+      <Space h={2} />
+      <Text>
+        Made by <A href="https://twitter.com/javierbyte">javierbyte</A>.
+      </Text>
+      <Space h={3} />
     </Container>
   );
 }

@@ -25,13 +25,13 @@
   "author": "Javier Bórquez <hi@javier.xyz> (http://github.com/javierbyte)",
   "license": "CC0-1.0",
   "devDependencies": {
-    "eslint": "^7.11.0",
+    "eslint": "^7.32.0",
     "eslint-plugin-react": "^7.21.4",
     "gh-pages": "^3.2.3"
   },
   "dependencies": {
     "canvas-image-utils": "^2.0.2",
-    "capsize": "^1.1.0",
+    "capsize": "^2.0.0",
     "jbx": "^1.0.0",
     "lodash": "^4.17.20",
     "react": "^17.0.2",
