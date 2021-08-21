@@ -1,4 +1,4 @@
-# [img2css](<(https://javier.xyz/img2css/)>)
+# [img2css](https://javier.xyz/img2css/)
 
 Convert any image to pure CSS.
 
