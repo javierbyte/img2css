@@ -4,21 +4,21 @@ Convert any image to pure CSS.
 
 [Live demo](https://javier.xyz/img2css/)
 
-[![img2css](docs-assets/screenshot.jpg)](https://javier.xyz/img2css/)
+[![img2css](public/img2css.jpg)](https://javier.xyz/img2css/)
 
 - To use it go to https://javier.xyz/img2css
-- Looking for a programmatic way to do this? see https://github.com/javierbyte/base64-image-utils
+- Looking for a programmatic way to do this? See https://github.com/javierbyte/canvas-image-utils
 - I also made a per-pixel animation experiment, see https://github.com/javierbyte/morphin
 
 ## How does it work?
 
-This tool creates a single one pixel shadow per pixel in the source images.
+It has two different outputs, pure css shadow matrix [1] and base64 embedded image [2].
 
-## Why?
+Pure CSS:
+This output was created by resizing and setting each pixel as a box-shadow of a single pixel div, so no `img` tag or `background-image` is needed. This can result in huge outputs, and the use of this output is not recommended for production unless there is no other option.
 
-Hmm... to demonstrate the power of CSS!
-
-And this may have other interesting applications, like creating loading screens with pixel art, display images where `<img />` tags are not allowed or supported.
+Base64:
+The entire image file is embedded inside the `<img>` tag using base64, so no need external hosting is needed.
 
 ### Development
 

@@ -133,8 +133,6 @@ function App() {
   return (
     <Container>
       <JBX accent={"#f1c40f"} />
-      <Space h={1} />
-
       <HeaderH1
         style={{
           fontWeight: 900,
@@ -287,16 +285,18 @@ function App() {
       <Text>
         <Ul>
           <Li>
-            Create single line SVG illustrations from your pictures,{" "}
-            <A href="https://javier.xyz/pintr/">PINTR</A>.
+            <A href="https://javier.xyz/pintr/">PINTR</A>., create single line
+            SVG illustrations from your pictures.
           </Li>
           <Li>
-            Play with 3D and shadows,{" "}
-            <A href="https://sombras.app/">sombras.app</A>.
+            <A href="https://sombras.app/">Sombras.app</A>, play with 3D and
+            shadows.
           </Li>
           <Li>
-            Find the visual center in your images / logos,{" "}
-            <A href="https://javier.xyz/visual-center/">visual-center</A>.
+            <A href="https://javier.xyz/visual-center/">Visual Center</A>, find the visual center in your images / logos.
+          </Li>
+          <Li>
+            <A href="https://javier.xyz/cohesive-colors/">Cohesive Colors</A>, create more cohesive color palettes.
           </Li>
         </Ul>
       </Text>

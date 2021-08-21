@@ -32,7 +32,7 @@
   "dependencies": {
     "canvas-image-utils": "^2.0.2",
     "capsize": "^2.0.0",
-    "jbx": "^1.0.0",
+    "jbx": "^1.2.0",
     "lodash": "^4.17.20",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
