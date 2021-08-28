@@ -4,7 +4,7 @@ import _ from "lodash";
 
 import {
   JBX,
-  HeaderH1,
+  MainHeader,
   Text,
   Space,
   A,
@@ -133,16 +133,7 @@ function App() {
   return (
     <Container>
       <JBX accent={"#f1c40f"} />
-      <HeaderH1
-        style={{
-          fontWeight: 900,
-          display: "inline-block",
-          width: "auto",
-          padding: "6px",
-          backgroundColor: "var(--accent-color)",
-        }}>
-        img2css
-      </HeaderH1>
+      <MainHeader>img2css</MainHeader>
 
       <Space h={1} />
       <Text>
@@ -173,8 +164,8 @@ function App() {
 
       <Space h={2} />
       <Text>
-        I also made a per-pixel animation experiment, see{" "}
-        <A href="https://javier.xyz/morphin/">morphin</A>.
+        I also made a per-pixel animation experiment using the box-shadow idea,
+        see <A href="https://javier.xyz/morphin/">morphin</A>.
       </Text>
 
       {rgbMatrix && (
@@ -280,12 +271,12 @@ function App() {
 
       <Space h={2} />
 
-      <Text>More unrelated experiments</Text>
+      <Text>More unrelated experiments:</Text>
       <Space h={0.5} />
       <Text>
         <Ul>
           <Li>
-            <A href="https://javier.xyz/pintr/">PINTR</A>., create single line
+            <A href="https://javier.xyz/pintr/">PINTR</A>, create single line
             SVG illustrations from your pictures.
           </Li>
           <Li>
@@ -293,10 +284,12 @@ function App() {
             shadows.
           </Li>
           <Li>
-            <A href="https://javier.xyz/visual-center/">Visual Center</A>, find the visual center in your images / logos.
+            <A href="https://javier.xyz/visual-center/">Visual Center</A>, find
+            the visual center in your images / logos.
           </Li>
           <Li>
-            <A href="https://javier.xyz/cohesive-colors/">Cohesive Colors</A>, create more cohesive color palettes.
+            <A href="https://javier.xyz/cohesive-colors/">Cohesive Colors</A>,
+            create more cohesive color palettes.
           </Li>
         </Ul>
       </Text>

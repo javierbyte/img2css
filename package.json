@@ -1,6 +1,6 @@
 {
   "name": "img2css",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Convert any image to pure css.",
   "scripts": {
     "dev": "react-scripts start",
@@ -23,7 +23,7 @@
     "pixelart"
   ],
   "author": "Javier Bórquez <hi@javier.xyz> (http://github.com/javierbyte)",
-  "license": "CC0-1.0",
+  "license": "BSD-3-Clause",
   "devDependencies": {
     "eslint": "^7.32.0",
     "eslint-plugin-react": "^7.21.4",
@@ -32,12 +32,12 @@
   "dependencies": {
     "canvas-image-utils": "^2.0.2",
     "capsize": "^2.0.0",
-    "jbx": "^1.2.0",
+    "jbx": "^1.5.0",
     "lodash": "^4.17.20",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "^4.0.0",
-    "styled-components": "^5.2.0",
+    "styled-components": "^5.3.1",
     "tinycolor2": "^1.4.2"
   },
   "browserslist": {
