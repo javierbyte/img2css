@@ -28,13 +28,13 @@
     "gh-pages": "^3.2.3"
   },
   "dependencies": {
-    "canvas-image-utils": "^2.0.2",
+    "canvas-image-utils": "^2.1.1",
     "capsize": "^2.0.0",
-    "jbx": "^1.5.0",
+    "jbx": "^1.7.2",
     "lodash": "^4.17.20",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "^4.0.0",
+    "react-scripts": "^5.0.0",
     "styled-components": "^5.3.1",
     "tinycolor2": "^1.4.2"
   },

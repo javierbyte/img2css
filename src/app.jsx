@@ -95,7 +95,7 @@ function App() {
         crop: false,
       });
 
-      base64DataSet(canvasRawData.ctx.canvas.toDataURL("image/jpeg", 0.66));
+      base64DataSet(canvasRawData.ctx.canvas.toDataURL("image/jpeg", 0.75));
       rgbMatrixSet(dataMatrix);
       loadingImageSet(false);
     };
@@ -144,7 +144,8 @@ function App() {
       <Dropzone
         onDrop={onFileSelected}
         onDragOver={onDragOver}
-        onDragEnter={onDragOver}>
+        onDragEnter={onDragOver}
+      >
         {loadingImage ? (
           <Text>Processing...</Text>
         ) : (
@@ -178,7 +179,8 @@ function App() {
                 key={"SHADOW"}
                 onClick={() => {
                   outputTypeSet("SHADOW");
-                }}>
+                }}
+              >
                 <Text>{"Pure CSS"}</Text>
               </Tab>
               <Tab
@@ -186,7 +188,8 @@ function App() {
                 key={"BASE64"}
                 onClick={() => {
                   outputTypeSet("BASE64");
-                }}>
+                }}
+              >
                 <Text>{"Base64"}</Text>
               </Tab>
             </Inline>
