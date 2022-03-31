@@ -1,6 +1,6 @@
-import React, { Fragment, useState } from "react";
-import tinycolor from "tinycolor2";
-import _ from "lodash";
+import React, { Fragment, useState } from 'react';
+import tinycolor from 'tinycolor2';
+import _ from 'lodash';
 
 import {
   JBX,
@@ -15,24 +15,24 @@ import {
   Tabs,
   Tab,
   Inline,
-} from "jbx";
+} from 'jbx';
 
-import Styled from "styled-components";
+import Styled from 'styled-components';
 
-import { imageToRGBMatrix, imageToRawData } from "canvas-image-utils";
+import { imageToRGBMatrix, imageToRawData } from 'canvas-image-utils';
 
 const Textarea = Styled.textarea({
-  fontFamily: "monaco, monospace",
-  border: "none",
-  width: "100%",
+  fontFamily: 'monaco, monospace',
+  border: 'none',
+  width: '100%',
   height: 256,
   fontSize: 13,
   lineHeight: 1.309,
-  padding: "16px 18px",
-  background: "#ecf0f1",
-  color: "#34495e",
-  ":focus": {
-    outline: "none",
+  padding: '16px 18px',
+  background: '#ecf0f1',
+  color: '#34495e',
+  ':focus': {
+    outline: 'none',
   },
 });
 
@@ -42,34 +42,34 @@ function compressColor(rgb) {
   switch (
     hex // based on CSS3 supported color names http://www.w3.org/TR/css3-color/
   ) {
-    case "#c0c0c0":
-      return "silver";
-    case "#808080":
-      return "gray";
-    case "#800000":
-      return "maroon";
-    case "#ff0000":
-      return "red";
-    case "#800080":
-      return "purple";
-    case "#008000":
-      return "green";
-    case "#808000":
-      return "olive";
-    case "#000080":
-      return "navy";
-    case "#008080":
-      return "teal";
+    case '#c0c0c0':
+      return 'silver';
+    case '#808080':
+      return 'gray';
+    case '#800000':
+      return 'maroon';
+    case '#ff0000':
+      return 'red';
+    case '#800080':
+      return 'purple';
+    case '#008000':
+      return 'green';
+    case '#808000':
+      return 'olive';
+    case '#000080':
+      return 'navy';
+    case '#008080':
+      return 'teal';
   }
   return hex[1] === hex[2] && hex[3] === hex[4] && hex[5] === hex[6]
-    ? "#" + hex[1] + hex[3] + hex[5]
+    ? '#' + hex[1] + hex[3] + hex[5]
     : hex;
 }
 
 function App() {
-  const [outputType, outputTypeSet] = useState("SHADOW");
+  const [outputType, outputTypeSet] = useState('SHADOW');
   const [originalSize, originalSizeSet] = useState(0);
-  const [base64Data, base64DataSet] = useState("");
+  const [base64Data, base64DataSet] = useState('');
   const [rgbMatrix, rgbMatrixSet] = useState(null);
   const [loadingImage, loadingImageSet] = useState(false);
 
@@ -95,7 +95,7 @@ function App() {
         crop: false,
       });
 
-      base64DataSet(canvasRawData.ctx.canvas.toDataURL("image/jpeg", 0.75));
+      base64DataSet(canvasRawData.ctx.canvas.toDataURL('image/jpeg', 0.75));
       rgbMatrixSet(dataMatrix);
       loadingImageSet(false);
     };
@@ -118,11 +118,11 @@ function App() {
 
       const scaleCompensation = scale !== 1 ? ` 0 ${scale / 2}px` : ``;
 
-      return `${color} ${j ? j + "px" : 0} ${
-        i ? i + "px" : 0
+      return `${color} ${j ? j + 'px' : 0} ${
+        i ? i + 'px' : 0
       }${scaleCompensation}`;
-    }).join(",");
-  }).join(",");
+    }).join(',');
+  }).join(',');
 
   const handleFocus = (event) => {
     event.preventDefault();
@@ -132,7 +132,7 @@ function App() {
 
   return (
     <Container>
-      <JBX accent={"#f1c40f"} />
+      <JBX accent={'#f1c40f'} />
       <MainHeader>img2css</MainHeader>
 
       <Space h={1} />
@@ -175,40 +175,40 @@ function App() {
           <Tabs>
             <Inline>
               <Tab
-                active={outputType === "SHADOW"}
-                key={"SHADOW"}
+                active={outputType === 'SHADOW'}
+                key={'SHADOW'}
                 onClick={() => {
-                  outputTypeSet("SHADOW");
+                  outputTypeSet('SHADOW');
                 }}
               >
-                <Text>{"Pure CSS"}</Text>
+                <Text>{'Pure CSS'}</Text>
               </Tab>
               <Tab
-                active={outputType === "BASE64"}
-                key={"BASE64"}
+                active={outputType === 'BASE64'}
+                key={'BASE64'}
                 onClick={() => {
-                  outputTypeSet("BASE64");
+                  outputTypeSet('BASE64');
                 }}
               >
-                <Text>{"Base64"}</Text>
+                <Text>{'Base64'}</Text>
               </Tab>
             </Inline>
           </Tabs>
           <Space h={1} />
 
-          {outputType === "BASE64" && (
+          {outputType === 'BASE64' && (
             <Fragment>
               <Text>
-                <strong>The result (base64).</strong>{" "}
+                <strong>The result (base64).</strong>{' '}
                 {
-                  "This is your image tag a base64 output. The entire image file is embedded inside the `<img>` tag using base64, so no need external hosting is needed."
+                  'This is your image tag a base64 output. The entire image file is embedded inside the `<img>` tag using base64, so no need external hosting is needed.'
                 }
               </Text>
               <Space h={1} />
 
               <img
                 src={base64Data}
-                style={{ maxWidth: "100%", height: "auto", display: "block" }}
+                style={{ maxWidth: '100%', height: 'auto', display: 'block' }}
               />
 
               <Space h={1} />
@@ -229,7 +229,7 @@ function App() {
             </Fragment>
           )}
 
-          {outputType === "SHADOW" && (
+          {outputType === 'SHADOW' && (
             <Fragment>
               <Text>
                 <strong>The result (pure CSS).</strong> This is your pure CSS
@@ -287,12 +287,12 @@ function App() {
             shadows.
           </Li>
           <Li>
-            <A href="https://javier.xyz/visual-center/">Visual Center</A>, find
-            the visual center in your images / logos.
-          </Li>
-          <Li>
             <A href="https://javier.xyz/cohesive-colors/">Cohesive Colors</A>,
             create more cohesive color palettes.
+          </Li>
+          <Li>
+            <A href="https://javier.xyz/visual-center/">Visual Center</A>, find
+            the visual center in your images / logos.
           </Li>
         </Ul>
       </Text>

@@ -30,12 +30,12 @@
   "dependencies": {
     "canvas-image-utils": "^2.1.1",
     "capsize": "^2.0.0",
-    "jbx": "^1.7.2",
+    "jbx": "^1.7.6",
     "lodash": "^4.17.20",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "react-scripts": "^5.0.0",
-    "styled-components": "^5.3.1",
+    "styled-components": "^5.3.5",
     "tinycolor2": "^1.4.2"
   },
   "browserslist": {
