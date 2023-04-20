@@ -60,11 +60,13 @@ function compressColor(rgba) {
     case '#008080ff':
       return 'teal';
   }
-  if (hex[1] === hex[2] && hex[3] === hex[4] && hex[5] === hex[6] && hex[7] === hex[8]) {
-    if (hex[7] === 'f') return '#' + hex[1] + hex[3] + hex[5];
-    return '#' + hex[1] + hex[3] + hex[5] + hex[7];
+  if (hex[7] === hex[8] && hex[7] === 'f') {
+    if (hex[1] === hex[2] && hex[3] === hex[4] && hex[5] === hex[6]) {
+      return '#' + hex[1] + hex[3] + hex[5];
+    }
+    return hex.slice(0, 7);
   }
-  return hex.slice(0, 7);
+  return hex;
 }
 
 function App() {
