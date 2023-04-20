@@ -1,6 +1,5 @@
 import React, { Fragment, useState } from 'react';
 import tinycolor from 'tinycolor2';
-import _ from 'lodash';
 
 import {
   JBX,
@@ -36,34 +35,36 @@ const Textarea = Styled.textarea({
   },
 });
 
-function compressColor(rgb) {
-  const hex = tinycolor(rgb).toHexString();
+function compressColor(rgba) {
+  const hex = tinycolor(rgba).toHex8String();
 
   switch (
     hex // based on CSS3 supported color names http://www.w3.org/TR/css3-color/
   ) {
-    case '#c0c0c0':
+    case '#c0c0c0ff':
       return 'silver';
-    case '#808080':
+    case '#808080ff':
       return 'gray';
-    case '#800000':
+    case '#800000ff':
       return 'maroon';
-    case '#ff0000':
+    case '#ff0000ff':
       return 'red';
-    case '#800080':
+    case '#800080ff':
       return 'purple';
-    case '#008000':
+    case '#008000ff':
       return 'green';
-    case '#808000':
+    case '#808000ff':
       return 'olive';
-    case '#000080':
+    case '#000080ff':
       return 'navy';
-    case '#008080':
+    case '#008080ff':
       return 'teal';
   }
-  return hex[1] === hex[2] && hex[3] === hex[4] && hex[5] === hex[6]
-    ? '#' + hex[1] + hex[3] + hex[5]
-    : hex;
+  if (hex[1] === hex[2] && hex[3] === hex[4] && hex[5] === hex[6] && hex[7] === hex[8]) {
+    if (hex[7] === 'f') return '#' + hex[1] + hex[3] + hex[5];
+    return '#' + hex[1] + hex[3] + hex[5] + hex[7];
+  }
+  return hex.slice(0, 7);
 }
 
 function App() {
@@ -109,20 +110,27 @@ function App() {
 
   let scale = 1;
 
-  const masterShadow = _.map(rgbMatrix, (row, rowIndexSrc) => {
-    return _.map(row, (col, colIndexSrc) => {
+  const masterShadowArr = [];
+  rgbMatrix?.forEach((row, rowIndexSrc) => {
+    row.forEach((col, colIndexSrc) => {
+      if (col.a === 0) return;
+
       const i = colIndexSrc * scale;
       const j = rowIndexSrc * scale;
 
-      const color = compressColor(`rgb(${col.r},${col.g},${col.b})`);
+      const color = compressColor(`rgba(${col.r},${col.g},${col.b},${col.a})`);
 
       const scaleCompensation = scale !== 1 ? ` 0 ${scale / 2}px` : ``;
 
-      return `${color} ${j ? j + 'px' : 0} ${
+      const shadow = `${color} ${j ? j + 'px' : 0} ${
         i ? i + 'px' : 0
       }${scaleCompensation}`;
-    }).join(',');
-  }).join(',');
+
+      masterShadowArr.push(shadow);
+    });
+  });
+
+  const masterShadow = masterShadowArr.join(',');
 
   const handleFocus = (event) => {
     event.preventDefault();
