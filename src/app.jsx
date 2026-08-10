@@ -166,7 +166,7 @@ function App() {
       <Space h={2} />
       <Text>
         I also made a per-pixel animation experiment using the box-shadow idea,
-        see <A href="https://javier.xyz/morphin/">morphin</A>.
+        see <A href="https://javier.xyz/morphin">morphin</A>.
       </Text>
 
       {rgbMatrix && (
@@ -279,7 +279,7 @@ function App() {
       <Text>
         <Ul>
           <Li>
-            <A href="https://javier.xyz/pintr/">PINTR</A>, create single line
+            <A href="https://javier.xyz/pintr">PINTR</A>, create single line
             SVG illustrations from your pictures.
           </Li>
           <Li>
@@ -287,11 +287,11 @@ function App() {
             shadows.
           </Li>
           <Li>
-            <A href="https://javier.xyz/cohesive-colors/">Cohesive Colors</A>,
+            <A href="https://javier.xyz/cohesive-colors">Cohesive Colors</A>,
             create more cohesive color palettes.
           </Li>
           <Li>
-            <A href="https://javier.xyz/visual-center/">Visual Center</A>, find
+            <A href="https://javier.xyz/visual-center">Visual Center</A>, find
             the visual center in your images / logos.
           </Li>
         </Ul>
