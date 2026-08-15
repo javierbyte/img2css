@@ -9,6 +9,7 @@ import {
   Space,
   A,
   Container,
+  CodeTextarea,
   Dropzone,
   Ul,
   Li,
@@ -17,24 +18,11 @@ import {
   Inline,
 } from 'jbx';
 
-import Styled from 'styled-components';
+import { imageToRGBMatrix, imgSrcToCtx } from 'canvas-image-utils';
 
-import { imageToRGBMatrix, imageToRawData } from 'canvas-image-utils';
-
-const Textarea = Styled.textarea({
-  fontFamily: 'monaco, monospace',
-  border: 'none',
-  width: '100%',
-  height: 256,
-  fontSize: 13,
-  lineHeight: 1.309,
-  padding: '16px 18px',
-  background: '#ecf0f1',
-  color: '#34495e',
-  ':focus': {
-    outline: 'none',
-  },
-});
+function Textarea(props) {
+  return <CodeTextarea style={{ height: 256 }} {...props} />;
+}
 
 function compressColor(rgb) {
   const hex = tinycolor(rgb).toHexString();
@@ -89,13 +77,16 @@ function App() {
 
     fr.onload = async (data) => {
       const base64src = data.currentTarget.result;
-      const dataMatrix = await imageToRGBMatrix(base64src, { size: 200 });
-      const canvasRawData = await imageToRawData(base64src, {
+      const dataMatrix = await imageToRGBMatrix(base64src, {
+        size: 200,
+        crop: false,
+      });
+      const { canvas } = await imgSrcToCtx(base64src, {
         size: 1080,
         crop: false,
       });
 
-      base64DataSet(canvasRawData.ctx.canvas.toDataURL('image/jpeg', 0.75));
+      base64DataSet(canvas.toDataURL('image/jpeg', 0.75));
       rgbMatrixSet(dataMatrix);
       loadingImageSet(false);
     };
@@ -216,7 +207,6 @@ function App() {
               <Textarea
                 onFocus={handleFocus}
                 onChange={() => {}}
-                className="code"
                 value={`<img src="${base64Data}" />`}
               />
               <Space h={1} />
@@ -253,7 +243,6 @@ function App() {
               <Textarea
                 onFocus={handleFocus}
                 onChange={() => {}}
-                className="code"
                 value={`<div style="margin-right: ${
                   rgbMatrix[0].length * scale
                 }px; margin-bottom: ${

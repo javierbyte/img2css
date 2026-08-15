@@ -2,15 +2,14 @@
   "name": "img2css",
   "version": "1.2.0",
   "description": "Convert any image to pure css.",
+  "type": "module",
+  "packageManager": "pnpm@11.21.0",
   "scripts": {
-    "dev": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "homepage": "https://javier.xyz/img2css/",
+  "homepage": "https://javier.xyz/img2css",
   "repository": {
     "type": "git",
     "url": "https://github.com/javierbyte/img2css.git"
@@ -24,30 +23,16 @@
   ],
   "author": "Javier Bórquez <hi@javier.xyz> (http://github.com/javierbyte)",
   "license": "BSD-3-Clause",
-  "devDependencies": {
-    "gh-pages": "^6.3.0"
-  },
   "dependencies": {
     "canvas-image-utils": "^2.5.0",
-    "capsize": "^2.0.0",
-    "jbx": "^2.10.0",
+    "jbx": "^2.11.0",
     "lodash": "^4.18.1",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "react-scripts": "^5.0.1",
-    "styled-components": "^6.5.1",
     "tinycolor2": "^1.6.0"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.5",
+    "vite": "^8.2.1"
   }
 }
