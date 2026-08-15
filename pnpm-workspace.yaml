@@ -1,4 +1,4 @@
 allowBuilds:
   esbuild: true
 minimumReleaseAgeExclude:
-  - jbx@2.11.0
+  - jbx@2.11.0 || 2.12.0

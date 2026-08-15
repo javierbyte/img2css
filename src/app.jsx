@@ -11,11 +11,10 @@ import {
   Container,
   CodeTextarea,
   Dropzone,
-  Ul,
-  Li,
   Tabs,
   Tab,
   Inline,
+  MoreExperiments,
 } from 'jbx';
 
 import { imageToRGBMatrix, imgSrcToCtx } from 'canvas-image-utils';
@@ -263,28 +262,7 @@ function App() {
 
       <Space h={2} />
 
-      <Text>More unrelated experiments:</Text>
-      <Space h={0.5} />
-      <Text>
-        <Ul>
-          <Li>
-            <A href="https://javier.xyz/pintr">PINTR</A>, create single line
-            SVG illustrations from your pictures.
-          </Li>
-          <Li>
-            <A href="https://sombras.app/">Sombras.app</A>, play with 3D and
-            shadows.
-          </Li>
-          <Li>
-            <A href="https://javier.xyz/cohesive-colors">Cohesive Colors</A>,
-            create more cohesive color palettes.
-          </Li>
-          <Li>
-            <A href="https://javier.xyz/visual-center">Visual Center</A>, find
-            the visual center in your images / logos.
-          </Li>
-        </Ul>
-      </Text>
+      <MoreExperiments exclude="img2css" />
 
       <Space h={2} />
       <Text>
