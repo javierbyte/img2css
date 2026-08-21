@@ -1,8 +1,8 @@
-# [img2css](https://javier.xyz/img2css/)
+# [img2css](https://javier.xyz/img2css)
 
 Convert any image to pure CSS.
 
-[![img2css](public/img2css.jpg)](https://javier.xyz/img2css/)
+[![img2css](public/img2css.jpg)](https://javier.xyz/img2css)
 
 - To use it go to https://javier.xyz/img2css
 - Looking for a programmatic way to do this? See https://github.com/javierbyte/canvas-image-utils
