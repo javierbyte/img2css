@@ -1,21 +1,10 @@
-import React, { Fragment, useState } from 'react';
+'use client';
+
+import { Fragment, useState } from 'react';
 import tinycolor from 'tinycolor2';
 import _ from 'lodash';
 
-import {
-  JBX,
-  MainHeader,
-  Text,
-  Space,
-  A,
-  Container,
-  CodeTextarea,
-  Dropzone,
-  Tabs,
-  Tab,
-  Inline,
-  MoreExperiments,
-} from 'jbx';
+import { Text, Space, CodeTextarea, Dropzone, Tabs, Tab, Inline } from 'jbx';
 
 import { imageToRGBMatrix, imgSrcToCtx } from 'canvas-image-utils';
 
@@ -53,7 +42,7 @@ function compressColor(rgb) {
     : hex;
 }
 
-function App() {
+function Img2cssApp() {
   const [outputType, outputTypeSet] = useState('SHADOW');
   const [originalSize, originalSizeSet] = useState(0);
   const [base64Data, base64DataSet] = useState('');
@@ -121,16 +110,7 @@ function App() {
   };
 
   return (
-    <Container>
-      <JBX accent={'#f1c40f'} />
-      <MainHeader>img2css</MainHeader>
-
-      <Space h={1} />
-      <Text>
-        This is a tool that can convert any image into a pure css image.
-      </Text>
-      <Space h={2} />
-
+    <Fragment>
       <Dropzone
         onDrop={onFileSelected}
         onDragOver={onDragOver}
@@ -152,12 +132,6 @@ function App() {
           aria-label="Drop an image here, or click to select"
         />
       </Dropzone>
-
-      <Space h={2} />
-      <Text>
-        I also made a per-pixel animation experiment using the box-shadow idea,
-        see <A href="https://javier.xyz/morphin">morphin</A>.
-      </Text>
 
       {rgbMatrix && (
         <Fragment>
@@ -259,18 +233,8 @@ function App() {
           )}
         </Fragment>
       )}
-
-      <Space h={2} />
-
-      <MoreExperiments exclude="img2css" />
-
-      <Space h={2} />
-      <Text>
-        Made by <A href="https://twitter.com/javierbyte">javierbyte</A>.
-      </Text>
-      <Space h={3} />
-    </Container>
+    </Fragment>
   );
 }
 
-export default App;
+export default Img2cssApp;

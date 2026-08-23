@@ -17,14 +17,10 @@ It has two different outputs, pure css shadow matrix [1] and base64 embedded ima
 
 ### Development
 
-Run development server:
+```sh
+pnpm install
+pnpm dev
+```
 
-```
-npm run dev
-```
-
-Build
-
-```
-npm run build
-```
+`pnpm build` writes the static site to `out/`. Pushing to `main` deploys it to the
+`gh-pages` branch, which `javier.xyz/img2css` serves.
