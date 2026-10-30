@@ -3,9 +3,9 @@
   "version": "1.2.0",
   "description": "Convert any image to pure css.",
   "type": "module",
-  "packageManager": "pnpm@11.21.0",
+  "packageManager": "pnpm@12.16.1",
   "scripts": {
-    "dev": "next dev",
+    "dev": "echo 'Local:         http://localhost:3003/img2css' && next dev -p 3003",
     "build": "next build",
     "start": "next start"
   },
@@ -21,16 +21,16 @@
     "experiments",
     "pixelart"
   ],
-  "author": "Javier Bórquez <hi@javier.xyz> (http://github.com/javierbyte)",
+  "author": "Javier B\u00f3rquez <hi@javier.xyz> (http://github.com/javierbyte)",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "@next/third-parties": "^16.3.2",
+    "@next/third-parties": "^16.4.3",
     "canvas-image-utils": "^2.5.0",
-    "jbx": "^2.13.0",
+    "jbx": "^2.16.1",
     "lodash": "^4.18.1",
-    "next": "^16.3.2",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8",
+    "next": "^16.4.3",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "tinycolor2": "^1.6.0"
   }
 }
